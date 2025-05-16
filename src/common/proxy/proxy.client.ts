@@ -9,12 +9,12 @@ export class ClientProxyBMS {
     constructor(private readonly config: ConfigService) {
     }
 
-    clientProxyUser(): ClientProxy {
+    clientProxyIdentity(): ClientProxy {
         return ClientProxyFactory.create({
             transport: Transport.RMQ,
             options: {
                 urls: this.config.get('AMQP_URL'),
-                queue: RabbitMQ.UserQueue
+                queue: RabbitMQ.IdentityQueue
             }
         })
     }
